@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module that provides a function to convert 
+"""Module that provides a function to convert
 a float to its string representation."""
 
 
