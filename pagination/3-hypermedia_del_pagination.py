@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deletion-resilient hypermedia pagination for a dataset of popular baby names."""
+"""Deletion-resilient hypermedia pagination for a dataset of baby names."""
 
 import csv
 import math
