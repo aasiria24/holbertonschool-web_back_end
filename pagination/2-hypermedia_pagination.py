@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module that provides hypermedia pagination for a dataset of popular baby names."""
+"""Module that provides hypermedia pagination for a dataset of baby names."""
 import csv
 import math
 from typing import Dict, List, Optional, Tuple
@@ -41,7 +41,7 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """Return the appropriate page of the dataset based on pagination params.
+        """Return the appropriate page of the dataset for pagination params.
 
         Args:
             page: The page number to retrieve (1-indexed, default is 1).
