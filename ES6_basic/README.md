@@ -25,19 +25,20 @@ By the end of this project, I have practiced:
 To install the project dependencies, run:
 ```bash
 npm install
-How to Run
-To execute a specific script (e.g., 0-main.js):
 ```
+How to Run:
+To execute a specific script (e.g., 0-main.js):
 Bash
 ```
 npm run dev 0-main.js
-To run the tests:
 ```
+To run the tests:
 Bash
 ```
 npm test
-To check for linting errors:
 ```
+To check for linting errors:
+
 Bash
 ```
 npm run lint
