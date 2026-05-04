@@ -24,6 +24,16 @@ NoSQL databases using MongoDB and PyMongo, including CRUD operations,
 aggregation pipelines, and Nginx log statistics.
 * Directory: `NoSQL`
 
+### ES6 Basics
+Introduction to modern JavaScript (ES6) features including constants, block-scoped 
+variables, arrow functions, rest and spread parameters, and promises.
+* Directory: `ES6_basic`
+
+### ES6 Classes
+Modern JavaScript OOP concepts, including class definitions, inheritance,
+metaprogramming symbols, and data validation using getters/setters.
+* Directory: `ES6_classes`
+
 ## Author
 
 Amaal Asiri, Holberton School Student.
