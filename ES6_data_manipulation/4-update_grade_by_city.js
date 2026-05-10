@@ -2,20 +2,8 @@
  * Updates student grades for a specific city.
  * @param {Array} students - The list of students.
  * @param {String} city - The city to filter by.
- * @param {Array} newGrades - The new grades to assign.
- * @returns {Array} A list of students in the city with their updated grades.
- */
-export default function updateStudentGradeByإليك الحل الذي يجمع بين `filter` و `map` لتحديث درجات الطلاب بناءً على المدينة، مع الالتزام بكافة المتطلبات التقنية:
-
-### الملف: `4-update_grade_by_city.js`
-
-```javascript
-/**
- * Updates student grades for a specific city.
- * @param {Array} students - The list of students.
- * @param {String} city - The city to filter by.
- * @param {Array} newGrades - Array of grade objects { studentId, grade }.
- * @returns {Array} Array of student objects with their updated grades.
+ * @param {Array} newGrades - Array of grade objects.
+ * @returns {Array} Array of student objects with updated grades.
  */
 export default function updateStudentGradeByCity(students, city, newGrades) {
   if (!Array.isArray(students)) {
@@ -25,13 +13,10 @@ export default function updateStudentGradeByCity(students, city, newGrades) {
   return students
     .filter((student) => student.location === city)
     .map((student) => {
-      // البحث عن درجة الطالب في مصفوفة newGrades
-      const gradeObj = newGrades.filter((grade) => grade.studentId === student.id)[0];
-
+      const gradeItems = newGrades.filter((grade) => grade.studentId === student.id);
       return {
         ...student,
-        // إذا وجدت الدرجة نضع قيمتها، وإلا نضع 'N/A'
-        grade: gradeObj ? gradeObj.grade : 'N/A',
+        grade: gradeItems.length > 0 ? gradeItems[0].grade : 'N/A',
       };
     });
-}
+}}
