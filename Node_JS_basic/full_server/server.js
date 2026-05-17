@@ -1,14 +1,10 @@
 import express from 'express';
-import routes from './routes/index';
+import router from './routes/index';
 
 const app = express();
-const PORT = 1245;
 
-// استخدام المسارات المجهزة
-app.use('/', routes);
+app.use('/', router);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app.listen(1245);
 
 export default app;
