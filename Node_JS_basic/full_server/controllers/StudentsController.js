@@ -8,10 +8,13 @@ class StudentsController {
       .then((fields) => {
         const lines = ['This is the list of our students'];
 
-        const sortedFields = Object.keys(fields).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+        const sortedFields = Object.keys(fields)
+          .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
         for (const field of sortedFields) {
-          lines.push(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+          const list = fields[field].join(', ');
+          const count = fields[field].length;
+          lines.push(`Number of students in ${field}: ${count}. List: ${list}`);
         }
 
         res.status(200).send(lines.join('\n'));
