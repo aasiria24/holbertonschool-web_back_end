@@ -1,44 +1,46 @@
-import readDatabase from '../utils';
+import { readDatabase } from '../utils';
 
 class StudentsController {
-  static getAllStudents(req, res) {
-    const filePath = process.argv[2];
+  /**
+   * Retrieves and formats all students from the database.
+   */
+  static getAllStudents(request, response) {
+    const dataPath = process.argv[2];
 
-    readDatabase(filePath)
+    readDatabase(dataPath)
       .then((fields) => {
-        const lines = ['This is the list of our students'];
-
+        const responseParts = ['This is the list of our students'];
+        
+        // ترتيب التخصصات أبجدياً ودون الحساسية لحالة الأحرف
         const sortedFields = Object.keys(fields).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
         for (const field of sortedFields) {
-          lines.push(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+          const names = fields[field];
+          responseParts.push(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
         }
 
-        res.status(200).send(lines.join('\n'));
+        return response.status(200).send(responseParts.join('\n'));
       })
-      .catch(() => {
-        res.status(500).send('Cannot load the database');
-      });
+      .catch(() => response.status(500).send('Cannot load the database'));
   }
 
-  static getAllStudentsByMajor(req, res) {
-    const { major } = req.params;
+  /**
+   * Retrieves students filtered by their major (CS or SWE).
+   */
+  static getAllStudentsByMajor(request, response) {
+    const { major } = request.params;
+    const dataPath = process.argv[2];
 
     if (major !== 'CS' && major !== 'SWE') {
-      res.status(500).send('Major parameter must be CS or SWE');
-      return;
+      return response.status(500).send('Major parameter must be CS or SWE');
     }
 
-    const filePath = process.argv[2];
-
-    readDatabase(filePath)
+    return readDatabase(dataPath)
       .then((fields) => {
-        const students = fields[major] || [];
-        res.status(200).send(`List: ${students.join(', ')}`);
+        const names = fields[major] || [];
+        return response.status(200).send(`List: ${names.join(', ')}`);
       })
-      .catch(() => {
-        res.status(500).send('Cannot load the database');
-      });
+      .catch(() => response.status(500).send('Cannot load the database'));
   }
 }
 
